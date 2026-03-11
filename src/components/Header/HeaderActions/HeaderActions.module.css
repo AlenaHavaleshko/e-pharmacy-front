@@ -1,0 +1,132 @@
+/* Shared container */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* ── Unauthenticated ───────────────────────────── */
+
+.register_btn {
+  display: inline-flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--color-white);
+  border: 1.5px solid rgba(255, 255, 255, 0.6);
+  border-radius: 60px;
+  padding: 13px 27px;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+
+.register_btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.login_btn {
+  display: inline-flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--color-white);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  white-space: nowrap;
+  transition: opacity 0.2s;
+}
+
+.login_btn:hover {
+  opacity: 0.75;
+}
+
+/* ── Authenticated ─────────────────────────────── */
+
+.cart_btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.6);
+  color: var(--color-white);
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+
+.cart_btn svg {
+  stroke: var(--color-white);
+  fill: none;
+}
+
+.cart_btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.cart_badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  background: var(--color-white);
+  color: var(--color-primary);
+  border-radius: 60px;
+  font-size: 10px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.user_btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.6);
+  color: var(--color-white);
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+
+.user_btn svg {
+  stroke: var(--color-white);
+  fill: none;
+}
+
+.user_btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.divider {
+  display: inline-block;
+  width: 1px;
+  height: 22px;
+  background: rgba(255, 255, 255, 0.45);
+  flex-shrink: 0;
+}
+
+.logout_btn {
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 400;
+  font-family: inherit;
+  color: var(--color-white);
+  border: 1.5px solid rgba(255, 255, 255, 0.6);
+  border-radius: 60px;
+  padding: 13px 27px;
+  background: none;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+
+.logout_btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+}

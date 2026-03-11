@@ -13,15 +13,15 @@ const Footer = () => {
                   <picture>
                     <source
                       media="(max-width: 768px)"
-                      srcSet="/logo/logo.white.mob.jpg"
+                      srcSet="/logo/logo.white.mob.png"
                     />
                     <source
                       media="(max-width: 1440px)"
-                      srcSet="/logo/logo.white.desk.jpg"
+                      srcSet="/logo/logo.white.desk.png"
                     />
                     <img
                       className={css.image}
-                      src="/logo/logo.white.desk.jpg"
+                      src="/logo/logo.white.desk.png"
                       alt="logo"
                     />
                   </picture>

@@ -1,0 +1,107 @@
+.page {
+  min-height: 80vh;
+  background: var(--color-light);
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+}
+/* ── Two-column content ──────────────────────────── */
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+}
+
+/* ── Left — promo ────────────────────────────────── */
+.promo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  max-width: 400px;
+  width: 100%;
+  position: relative;
+}
+
+.pill_wrap {
+  align-self: center;
+}
+
+.pill_img {
+   position: absolute;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+.promo_text {
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.11;
+  color: var(--color-dark);
+  letter-spacing: -0.02em;
+}
+
+.promo_highlight {
+  color: var(--color-primary);
+}
+
+/* ── Right — form ────────────────────────────────── */
+.form_wrap {
+  width: 100%;
+  max-width: 614px;
+}
+
+/* ── Desktop layout ──────────────────────────────── */
+@media (min-width: 768px) {
+  .page {
+    gap: 54px;
+  }
+
+  .content {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    gap: 60px;
+  }
+
+  .promo {
+    max-width: 614px;
+    align-items: flex-start;
+  }
+
+  .pill_wrap {
+    align-self: flex-start;
+  }
+
+  .promo_text {
+    font-size: 54px;
+  }
+
+  .form_wrap {
+    max-width: 6140px;
+  }
+}
+
+@media (min-width: 1200px) {
+
+  .content {
+    gap: 100px;
+  }
+
+  .promo {
+    max-width: 614px;
+  }
+
+  .pill_img {
+  top: -80px;
+  left: 395px;
+  }
+
+  .form_wrap {
+    max-width: 614px;
+  }
+}

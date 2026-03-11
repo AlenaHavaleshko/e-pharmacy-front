@@ -1,0 +1,20 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 40px;
+}
+
+@media (min-width: 768px) {
+  .section {
+    flex-direction: row;
+    gap: 28px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .section {
+    gap: 28px;
+     margin-top: 64px;
+  }
+}

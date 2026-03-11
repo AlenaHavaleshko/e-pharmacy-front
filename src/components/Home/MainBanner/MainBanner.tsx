@@ -16,10 +16,10 @@ export default function MainBanner() {
         <Image
           src="/hero/hero-mb.png"
           alt="Medicine capsules"
-          fill
+          width={500}
+          height={337}
           priority
           className={styles.heroImage}
-          sizes="100vw"
         />
       </div>
 
@@ -28,10 +28,10 @@ export default function MainBanner() {
         <Image
           src="/hero/hero-tb.png"
           alt="Medicine capsules"
-          fill
+          width={600}
+          height={405}
           priority
           className={styles.heroImage}
-          sizes="100vw"
         />
       </div>
 
@@ -40,10 +40,10 @@ export default function MainBanner() {
         <Image
           src="/hero/hero-dt.png"
           alt="Medicine capsules"
-          fill
+          width={750}
+          height={508}
           priority
           className={styles.heroImage}
-          sizes="100vw"
         />
       </div>
     </section>

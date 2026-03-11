@@ -1,9 +1,5 @@
-import MainBanner from '@/src/components/Home/MainBanner/MainBanner';
+import { redirect } from 'next/navigation';
 
-export default function Home() {
-  return (
-    <main>
-      <MainBanner />
-    </main>
-  );
+export default function Page() {
+  redirect('/home');
 }

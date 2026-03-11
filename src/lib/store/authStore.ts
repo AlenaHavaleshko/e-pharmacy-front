@@ -1,20 +1,28 @@
-// import { create } from 'zustand';
-// // import { User } from '@/types/user';
+import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
+import type { User } from '@/src/types/auth';
 
-// type AuthStore = {
-//   isAuthenticated: boolean;
-//   user: User | null;
-//   setUser: (user: User) => void;
-//   clearIsAuthenticated: () => void;
-// };
+type AuthStore = {
+  user: User | null;
+  token: string | null;
+  isAuthenticated: boolean;
+  cartCount: number;
+  setAuth: (user: User, token: string) => void;
+  logout: () => void;
+  setCartCount: (count: number) => void;
+};
 
-// export const useAuthStore = create<AuthStore>()((set) => ({
-//   isAuthenticated: false,
-//   user: null,
-//   setUser: (user: User) => {
-//     set(() => ({ user, isAuthenticated: true }));
-//   },
-//   clearIsAuthenticated: () => {
-//     set(() => ({ user: null, isAuthenticated: false }));
-//   },
-// }));
+export const useAuthStore = create<AuthStore>()(
+  persist(
+    (set) => ({
+      user: null,
+      token: null,
+      isAuthenticated: false,
+      cartCount: 0,
+      setAuth: (user, token) => set({ user, token, isAuthenticated: true }),
+      logout: () => set({ user: null, token: null, isAuthenticated: false, cartCount: 0 }),
+      setCartCount: (count) => set({ cartCount: count }),
+    }),
+    { name: 'auth-storage' }
+  )
+);

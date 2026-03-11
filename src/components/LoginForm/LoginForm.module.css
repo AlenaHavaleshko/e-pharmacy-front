@@ -1,0 +1,133 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  max-width: 323px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.password_wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  width: 100%;
+  padding: 13px 18px;
+  border: 1px solid rgba(29, 30, 33, 0.1);
+  border-radius: 60px;
+  font-size: 12px;
+  font-family: var(--font-family);
+  color: var(--color-dark);
+  background: var(--color-white);
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+
+.input::placeholder {
+  color: rgba(29, 30, 33, 0.4);
+}
+
+.input:focus {
+  border-color: var(--color-primary);
+}
+
+.input_error {
+  border-color: #e74c3c;
+}
+
+.password_wrap .input {
+  padding-right: 44px;
+}
+
+.eye_btn {
+  position: absolute;
+  right: 14px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  color: rgba(29, 30, 33, 0.4);
+  display: flex;
+  align-items: center;
+  transition: color 0.2s;
+}
+
+.eye_btn:hover {
+  color: var(--color-primary);
+}
+
+.error_msg {
+  font-size: 11px;
+  color: #e74c3c;
+  padding-left: 14px;
+  line-height: 1.2;
+}
+
+.submit_btn {
+  width: 100%;
+  padding: 14px;
+  background: var(--color-primary);
+  color: var(--color-white);
+  border: none;
+  border-radius: 60px;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: var(--font-family);
+  cursor: pointer;
+  transition: opacity 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  letter-spacing: 0.02em;
+  margin-top: 48px;
+}
+
+.submit_btn:hover:not(:disabled) {
+  opacity: 0.85;
+}
+
+.submit_btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.spinner {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.footer_text {
+  font-weight: 400 ;
+  font-size: 12px;
+  color: #a2a4a81a;
+  text-align: center;
+}
+
+.footer_link {
+  color: var(--color-dark);
+  font-weight: 500;
+  text-decoration: none;
+  text-underline-offset: 2px;
+  color: #1D1E2166;
+}

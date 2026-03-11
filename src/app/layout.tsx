@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
 import './globals.css';
 import Header from '@/src/components/Header/Header';
 import Footer from '@/src/components/Footer/Footer';
@@ -20,8 +19,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.variable}>
+    <html lang="en" className={inter.variable}>
+      <body>
         <TanStackProvider>
           <Header />
           <div className="container"> {children}</div>
