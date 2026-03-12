@@ -1,10 +1,16 @@
 import { nextServer } from './api';
-import type { Store } from '@/src/types/store.ts';
+import type { Store } from '@/src/types/store';
 
 export async function fetchStores(): Promise<Store[]> {
   try {
-    const res = await nextServer.get<Store[]>('/stores');
-    return res.data ?? [];
+    const res = await nextServer.get('/stores', {
+      params: { limit: 6, page: 1 },
+    });
+    const data = res.data;
+    if (Array.isArray(data)) return data;
+    if (Array.isArray(data?.stores)) return data.stores;
+    if (Array.isArray(data?.data)) return data.data;
+    return [];
   } catch {
     return [];
   }
