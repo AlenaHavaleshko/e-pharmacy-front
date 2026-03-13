@@ -1,16 +1,8 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import type { User } from '@/src/types/auth';
+import type { AuthStore } from '@/src/types/auth';
 
-type AuthStore = {
-  user: User | null;
-  token: string | null;
-  isAuthenticated: boolean;
-  cartCount: number;
-  setAuth: (user: User, token: string) => void;
-  logout: () => void;
-  setCartCount: (count: number) => void;
-};
 
 export const useAuthStore = create<AuthStore>()(
   persist(

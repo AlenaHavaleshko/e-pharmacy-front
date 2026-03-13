@@ -1,0 +1,201 @@
+/* ===== Section ===== */
+.section {
+  margin-top: 40px;
+}
+
+/* ===== Green Card ===== */
+.card {
+  position: relative;
+  background-color: var(--color-primary);
+  border-radius: 24px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 280px;
+}
+
+/* ===== Content (left side) ===== */
+.content {
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 360px;
+  z-index: 2;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--color-white);
+}
+
+.description {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--color-white);
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  padding: 12px 28px;
+  border: 1px solid var(--color-white);
+  border-radius: 60px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-white);
+  background: transparent;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.button:hover {
+  background-color: var(--color-white);
+  color: var(--color-primary);
+  opacity: 1;
+}
+
+/* ===== Image wrappers ===== */
+.imageWrapper {
+  line-height: 0;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+
+/* Show / hide per breakpoint */
+.imageMobile  { display: block; }
+.imageTablet  { display: none; }
+.imageDesktop { display: none; }
+
+/* ===== Features list ===== */
+.featuresList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 24px;
+  padding: 0 4px;
+}
+
+.featureItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-dark);
+}
+
+.featureIcon {
+  flex-shrink: 0;
+}
+
+/* =========================================================
+   Tablet  (≥ 768px)
+   ========================================================= */
+@media (min-width: 768px) {
+  .section {
+    margin-top: 50px;
+  }
+
+  .card {
+    flex-direction: row;
+    align-items: stretch;
+    min-height: 380px;
+  }
+
+  .content {
+    padding: 60px 40px;
+    max-width: 380px;
+    justify-content: center;
+  }
+
+  .title {
+    font-size: 38px;
+  }
+
+  .description {
+    font-size: 15px;
+  }
+
+  /* Image sits on the right, fills the remaining space */
+  .imageWrapper {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+  }
+
+  .image {
+    width: auto;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .imageMobile  { display: none; }
+  .imageTablet  { display: block; }
+  .imageDesktop { display: none; }
+
+  .featuresList {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px 32px;
+    margin-top: 32px;
+  }
+}
+
+/* =========================================================
+   Desktop  (≥ 1440px)
+   ========================================================= */
+@media (min-width: 1440px) {
+  .section {
+    margin-top: 64px;
+  }
+
+  .card {
+    min-height: 380px;
+  }
+
+  .content {
+    padding: 70px 64px;
+    max-width: 500px;
+    gap: 24px;
+  }
+
+  .title {
+    font-size: 48px;
+  }
+
+  .description {
+    font-size: 16px;
+  }
+
+  .button {
+    font-size: 16px;
+    padding: 14px 36px;
+  }
+
+  .imageMobile  { display: none; }
+  .imageTablet  { display: none; }
+  .imageDesktop { display: block; }
+
+  .featuresList {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 0;
+    justify-content: space-between;
+    margin-top: 40px;
+  }
+
+  .featureItem {
+    font-size: 16px;
+  }
+}

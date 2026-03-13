@@ -18,6 +18,16 @@ export interface LoginData {
   password: string;
 }
 
+export type AuthStore = {
+  user: User | null;
+  token: string | null;
+  isAuthenticated: boolean;
+  cartCount: number;
+  setAuth: (user: User, token: string) => void;
+  logout: () => void;
+  setCartCount: (count: number) => void;
+};
+
 export interface AuthResponse {
   token: string;
   user: User;
