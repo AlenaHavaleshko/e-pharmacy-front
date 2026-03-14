@@ -20,13 +20,12 @@ export const StoreCard = ({
   status,
   variant = 'home',
 }: StoreCardProps) => {
-  console.log({ name, address, city, phone, rating, status, variant });
   return (
     <div className={`${styles.card} ${styles[variant]}`}>
       <div className={styles.header}>
         <h3 className={styles.name}>{name}</h3>
 
-{/* // for home page */}
+        {/* // for home page */}
         {variant === 'home' && (
           <div className={styles.meta}>
             <span className={styles.rating}>
@@ -82,16 +81,23 @@ export const StoreCard = ({
           <span>{phone}</span>
         </li>
       </ul>
-{/* // for medicine store page */}
+      {/* // for medicine store page */}
       {variant === 'stores' && (
         <div className={styles.footer}>
-          <button className={styles.visitButton}>
-            Visit Store
-          </button>
+          <button className={styles.visitButton}>Visit Store</button>
 
           <div className={styles.meta}>
             <span className={styles.rating}>
-              ⭐ {rating}
+              <svg
+                className={styles.star}
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+              >
+                <use href="/sprite.svg#icon-star"></use>
+              </svg>
+              {rating}
             </span>
 
             <span

@@ -1,18 +1,15 @@
-import { StoreCard } from "@/src/components/Home/MedicineStores/StoreCard";
-import { fetchStores } from "@/src/lib/api/serverApi";
-import type { Store } from "@/src/types/store";
+import { StoreCard } from '@/src/components/Home/MedicineStores/StoreCard';
+import { fetchStores } from '@/src/lib/api/serverApi';
+import type { Store } from '@/src/types/store';
 import styles from './medicine-store.module.css';
 
-
 export default async function MedicineStorePage() {
-
   const stores: Store[] = await fetchStores();
-  console.log(stores);
   return (
-    <section>
-      <h2>Medicine store</h2>
+    <section className={styles.section}>
+      <h2 className={styles.title}>Medicine store</h2>
       <ul className={styles.grid}>
-        {stores.slice(0, 6).map((store) => (
+        {stores.slice(0, 9).map((store) => (
           <li key={store._id}>
             <StoreCard
               variant="stores"
@@ -27,9 +24,6 @@ export default async function MedicineStorePage() {
           </li>
         ))}
       </ul>
-
-      </section>
-
-    
+    </section>
   );
 }
