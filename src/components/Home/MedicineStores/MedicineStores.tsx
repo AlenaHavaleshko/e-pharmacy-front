@@ -1,10 +1,10 @@
 import styles from './MedicineStores.module.css';
 import { StoreCard } from './StoreCard';
-import { fetchStores } from '@/src/lib/api/serverApi';
+import { fetchStoresNearest } from '@/src/lib/api/serverApi';
 import type { Store } from '@/src/types/store';
 
 export const MedicineStores = async () => {
- const stores: Store[] = await fetchStores();
+ const stores: Store[] = await fetchStoresNearest();
 
   return (
     <section className={styles.section}>

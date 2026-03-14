@@ -5,5 +5,5 @@ export interface Store {
   city: string;
   phone: string;
   rating: number;
-  status: 'OPEN' | 'CLOSED';
+  status: 'OPEN' | 'CLOSE';
 }

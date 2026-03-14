@@ -15,3 +15,19 @@ export async function fetchStores(): Promise<Store[]> {
     return [];
   }
 }
+
+export async function fetchStoresNearest(): Promise<Store[]> {
+  try {
+    const res = await nextServer.get('/stores/nearest', {
+      params: { limit: 6, page: 1 },
+    });
+    const data = res.data;
+    // backend shape: { data: { stores: [...] } }
+    if (Array.isArray(data?.data?.stores)) return data.data.stores;
+    if (Array.isArray(data?.data)) return data.data;
+    if (Array.isArray(data)) return data;
+    return [];
+  } catch {
+    return [];
+  }
+}

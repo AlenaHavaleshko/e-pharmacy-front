@@ -1,5 +1,13 @@
 import { NextResponse } from 'next/server';
+import { api } from '../../_utils/api';
+import { logErrorResponse } from '../../_utils/logErrorResponse';
 
 export async function GET() {
-  return NextResponse.json({ message: 'Not implemented' }, { status: 501 });
+  try {
+    const { data } = await api.get('/stores/nearest');
+    return NextResponse.json(data);
+  } catch (error) {
+    logErrorResponse(error);
+    return NextResponse.json({ error: 'Failed to fetch nearest stores' }, { status: 500 });
+  }
 }

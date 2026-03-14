@@ -39,13 +39,13 @@ const Footer = () => {
               <nav className={css.nav}>
                 <ul className={css.nav_list}>
                   <li className={css.nav_item}>
-                    <Link href="/shop">Shop</Link>
+                    <Link href="/home">Home</Link>
+                  </li>
+                  <li className={css.nav_item}>
+                    <Link href="/medicine-store">Medicine store</Link>
                   </li>
                   <li className={css.nav_item}>
                     <Link href="/medicine">Medicine</Link>
-                  </li>
-                  <li className={css.nav_item}>
-                    <Link href="/statistics">Statistics</Link>
                   </li>
                 </ul>
               </nav>

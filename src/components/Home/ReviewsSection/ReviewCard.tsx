@@ -1,5 +1,9 @@
+'use client';
+
 import Image from 'next/image';
 import styles from './ReviewCard.module.css';
+
+console.log(styles);
 
 export interface ReviewCardProps {
   name: string;
