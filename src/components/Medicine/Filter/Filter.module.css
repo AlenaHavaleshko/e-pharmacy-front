@@ -1,0 +1,130 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 14px;
+  width: 640px;
+}
+
+/* ── Select ── */
+.selectWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.select {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 214px;
+  height: 44px;
+  padding: 0 40px 0 16px;
+  border: 1.5px solid rgba(29, 30, 33, 0.1);
+  border-radius: 60px;
+  background: var(--color-white);
+  font-family: var(--font-family);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--color-dark);
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.select:focus {
+  border-color: var(--color-primary);
+}
+
+.select option[value=''] {
+  color: rgba(29, 30, 33, 0.5);
+}
+
+.chevron {
+  position: absolute;
+  right: 14px;
+  pointer-events: none;
+  stroke: var(--color-dark);
+  fill: none;
+  flex-shrink: 0;
+}
+
+/* ── Search input ── */
+.inputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.input {
+  width: 224px;
+  height: 44px;
+  padding: 0 40px 0 16px;
+  border: 1.5px solid rgba(29, 30, 33, 0.1);
+  border-radius: 60px;
+  background: var(--color-white);
+  font-family: var(--font-family);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--color-dark);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.input::placeholder {
+  color: rgba(29, 30, 33, 0.5);
+}
+
+.input:focus {
+  border-color: var(--color-primary);
+}
+
+.searchIcon {
+  position: absolute;
+  right: 14px;
+  pointer-events: none;
+  stroke: var(--color-dark);
+  fill: none;
+  flex-shrink: 0;
+}
+
+/* ── Filter button ── */
+.button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 44px;
+  padding: 0 24px;
+  border: none;
+  border-radius: 60px;
+  background: var(--color-primary);
+  color: var(--color-white);
+  font-family: var(--font-family);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s;
+  flex-shrink: 0;
+  width: 116px;
+}
+
+.button:hover {
+  background: #4a9a68;
+}
+
+.filterIcon {
+  stroke: var(--color-white);
+  fill: none;
+  flex-shrink: 0;
+}
+
+@media (min-width: 768px) {
+  .wrapper {
+    gap: 12px;
+  }
+
+  .select {
+    width: 220px;
+  }
+}
