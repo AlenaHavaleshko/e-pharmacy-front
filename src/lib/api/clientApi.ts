@@ -19,3 +19,7 @@ export async function loginUser(data: LoginData): Promise<AuthResponse> {
 export async function logoutUser(): Promise<void> {
   await client.post('/user/logout');
 }
+
+export async function addToCart(productId: string, quantity = 1): Promise<void> {
+  await client.post('/cart', { productId, quantity });
+}

@@ -4,20 +4,11 @@ import { useState } from 'react';
 import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 import styles from './Filter.module.css';
 
-const CATEGORIES = [
-  'Antibiotics',
-  'Antiseptics',
-  'Cardiovascular',
-  'Dermatology',
-  'Gastrointestinal',
-  'Head',
-  'Heart',
-  'Hand',
-  'Leg',
-  'Vitamins & Supplements',
-];
+interface FilterProps {
+  categories: string[];
+}
 
-export const Filter = () => {
+export const Filter = ({ categories }: FilterProps) => {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -48,7 +39,7 @@ export const Filter = () => {
           aria-label="Product category"
         >
           <option value="">Product category</option>
-          {CATEGORIES.map((cat) => (
+          {categories.map((cat) => (
             <option key={cat} value={cat}>
               {cat}
             </option>

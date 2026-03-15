@@ -6,8 +6,16 @@ import { AxiosError } from 'axios';
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { data } = await api.post('/auth/login', body);
-    return NextResponse.json(data, { status: 200 });
+    // trim inputs to prevent whitespace-caused auth failures
+    const cleaned = {
+      email: (body.email ?? '').trim().toLowerCase(),
+      password: (body.password ?? '').trim(),
+    };
+    const { data: raw } = await api.post('/user/login', cleaned);
+    // backend wraps: { status, data: { accessToken, user } }
+    const inner = raw?.data ?? raw;
+    const payload = { token: inner.accessToken ?? inner.token, user: inner.user };
+    return NextResponse.json(payload, { status: 200 });
   } catch (err) {
     logErrorResponse(err);
     const axiosErr = err as AxiosError<{ message?: string }>;

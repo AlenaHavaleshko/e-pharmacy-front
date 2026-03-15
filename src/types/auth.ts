@@ -1,15 +1,21 @@
 export interface User {
-  _id: string;
+  _id?: string;
+  id?: string;
   name: string;
   email: string;
   phone?: string;
   avatarURL?: string;
 }
 
+export interface AuthResponse {
+  token: string;
+  user: User;
+}
+
 export interface RegisterData {
   name: string;
   email: string;
-  phone: string;
+  phone?: string;
   password: string;
 }
 

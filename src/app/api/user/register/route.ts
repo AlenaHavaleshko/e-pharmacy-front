@@ -6,8 +6,19 @@ import { AxiosError } from 'axios';
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { data } = await api.post('/auth/register', body);
-    return NextResponse.json(data, { status: 201 });
+    // backend does not accept "phone" — strip it
+    const { phone: _phone, ...rest } = body;
+    const cleaned = {
+      ...rest,
+      name: (rest.name ?? '').trim(),
+      email: (rest.email ?? '').trim().toLowerCase(),
+      password: (rest.password ?? '').trim(),
+    };
+    const { data: raw } = await api.post('/user/register', cleaned);
+    // backend wraps: { status, data: { accessToken, user } }
+    const inner = raw?.data ?? raw;
+    const payload = { token: inner.accessToken ?? inner.token, user: inner.user };
+    return NextResponse.json(payload, { status: 201 });
   } catch (err) {
     logErrorResponse(err);
     const axiosErr = err as AxiosError<{ message?: string }>;

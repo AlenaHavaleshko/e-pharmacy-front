@@ -3,3 +3,33 @@
   flex-direction: column;
   gap: 32px;
 }
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px 21px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.empty {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+  color: rgba(29, 30, 33, 0.5);
+  padding: 60px 0;
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1440px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px 21px;
+  }
+}

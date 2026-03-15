@@ -1,17 +1,23 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 import HeaderActions from './HeaderActions/HeaderActions';
 import css from './Header.module.css';
 
 const Header = () => {
+  const pathname = usePathname();
+  const isHome = pathname === '/home' || pathname === '/';
+
   return (
-    <header className={css.header}>
+    <header className={`${css.header} ${isHome ? '' : css.header_light}`}>
       <div className="container">
         <div className={css.header_container}>
           <div className={css.logo}>
             <Link href="/">
               <Image
-                src="/logo/logo.white.mob.png"
+                src={isHome ? '/logo/logo.white.mob.png' : '/logo/logo.mob.png'}
                 alt="E-Pharmacy logo"
                 width={32}
                 height={32}
@@ -20,7 +26,10 @@ const Header = () => {
                 priority
               />
             </Link>
-            <Link className={css.link_text} href="/">
+            <Link
+              className={`${css.link_text} ${isHome ? '' : css.link_text_dark}`}
+              href="/"
+            >
               E-Pharmacy
             </Link>
           </div>
@@ -37,9 +46,13 @@ const Header = () => {
               </li>
             </ul>
           </nav>
-          <HeaderActions isAuthenticated={false} />
+          <HeaderActions />
 
-          <button className={css.burger} type="button" aria-label="Open menu">
+          <button
+            className={`${css.burger} ${isHome ? '' : css.burger_dark}`}
+            type="button"
+            aria-label="Open menu"
+          >
             <svg className={css.burger_icon} width={32} height={26}>
               <use href="/sprite.svg#icon-burger" />
             </svg>

@@ -5,7 +5,7 @@ import { AxiosError } from 'axios';
 
 export async function POST() {
   try {
-    await api.post('/auth/logout');
+    await api.post('/user/logout');
     return NextResponse.json({ message: 'Logged out' }, { status: 200 });
   } catch (err) {
     logErrorResponse(err);

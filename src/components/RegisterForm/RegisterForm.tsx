@@ -23,14 +23,24 @@ function validate(fields: Fields): FieldErrors {
     errors.name = 'Name must be at least 2 characters.';
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fields.email.trim()))
     errors.email = 'Enter a valid email address.';
-  if (!/^\+?[\d\s\-(]{7,15}$/.test(fields.phone.trim()))
+  if (!/^\+?[\d\s\-(]{7,20}$/.test(fields.phone.trim()) && fields.phone.trim())
     errors.phone = 'Enter a valid phone number.';
   if (fields.password.length < 8)
     errors.password = 'Password must be at least 8 characters.';
   return errors;
 }
 
-export default function RegisterForm() {
+interface RegisterFormProps {
+  onSuccess?: () => void;
+  onSwitch?: () => void;
+  layout?: 'grid' | 'column';
+}
+
+export default function RegisterForm({
+  onSuccess,
+  onSwitch,
+  layout = 'grid',
+}: RegisterFormProps = {}) {
   const router = useRouter();
   const setAuth = useAuthStore((s) => s.setAuth);
 
@@ -70,7 +80,8 @@ export default function RegisterForm() {
       });
       setAuth(auth.user, auth.token);
       toast.success(`Welcome, ${auth.user.name}!`);
-      router.push('/medicine');
+      if (onSuccess) onSuccess();
+      else router.push('/medicine');
     } catch (err: unknown) {
       const message =
         (err as { response?: { data?: { message?: string } } })?.response?.data
@@ -84,6 +95,7 @@ export default function RegisterForm() {
   const field = (key: keyof Fields, placeholder: string, type = 'text') => (
     <div className={css.field}>
       <input
+        suppressHydrationWarning
         className={`${css.input} ${errors[key] ? css.input_error : ''}`}
         type={key === 'password' ? (showPassword ? 'text' : 'password') : type}
         name={key}
@@ -102,6 +114,7 @@ export default function RegisterForm() {
       />
       {key === 'password' && (
         <button
+          suppressHydrationWarning
           type="button"
           className={css.eye_btn}
           onClick={() => setShowPassword((v) => !v)}
@@ -118,7 +131,7 @@ export default function RegisterForm() {
 
   return (
     <form className={css.form} onSubmit={handleSubmit} noValidate>
-      <div className={css.grid}>
+      <div className={layout === 'column' ? css.gridColumn : css.grid}>
         {field('name', 'User Name')}
         {field('email', 'Email address', 'email')}
         {field('phone', 'Phone number', 'tel')}
@@ -126,19 +139,31 @@ export default function RegisterForm() {
       </div>
 
       <div className={css.submit_wrap}>
-       <button className={css.submit_btn} type="submit" disabled={loading}>
-        {loading ? <span className={css.spinner} /> : 'Register'}
-      </button>
+        <button
+          suppressHydrationWarning
+          className={css.submit_btn}
+          type="submit"
+          disabled={loading}
+        >
+          {loading ? <span className={css.spinner} /> : 'Register'}
+        </button>
 
-      <p className={css.footer_text}>
-        <Link href="/login" className={css.footer_link}>
-          Already have an account?
-        </Link>
-      </p>
-
+        <p className={css.footer_text}>
+          {onSwitch ? (
+            <button
+              type="button"
+              className={css.footer_link}
+              onClick={onSwitch}
+            >
+              Already have an account?
+            </button>
+          ) : (
+            <Link href="/login" className={css.footer_link}>
+              Already have an account?
+            </Link>
+          )}
+        </p>
       </div>
-
-      
     </form>
   );
 }

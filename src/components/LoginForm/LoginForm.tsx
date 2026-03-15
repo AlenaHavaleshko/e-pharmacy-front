@@ -19,12 +19,20 @@ function validate(fields: Fields): FieldErrors {
   const errors: FieldErrors = {};
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fields.email.trim()))
     errors.email = 'Enter a valid email address.';
-  if (fields.password.length < 8)
+  if (fields.password.trim().length < 8)
     errors.password = 'Password must be at least 8 characters.';
   return errors;
 }
 
-export default function LoginForm() {
+interface LoginFormProps {
+  onSuccess?: () => void;
+  onSwitch?: () => void;
+}
+
+export default function LoginForm({
+  onSuccess,
+  onSwitch,
+}: LoginFormProps = {}) {
   const router = useRouter();
   const setAuth = useAuthStore((s) => s.setAuth);
 
@@ -50,10 +58,14 @@ export default function LoginForm() {
     }
     setLoading(true);
     try {
-      const auth = await loginUser(fields);
+      const auth = await loginUser({
+        email: fields.email.trim().toLowerCase(),
+        password: fields.password.trim(),
+      });
       setAuth(auth.user, auth.token);
       toast.success(`Welcome back, ${auth.user.name}!`);
-      router.push('/');
+      if (onSuccess) onSuccess();
+      else router.push('/medicine');
     } catch (err: unknown) {
       const message =
         (err as { response?: { data?: { message?: string } } })?.response?.data
@@ -69,6 +81,7 @@ export default function LoginForm() {
       {/* Email */}
       <div className={css.field}>
         <input
+          suppressHydrationWarning
           className={`${css.input} ${errors.email ? css.input_error : ''}`}
           type="email"
           name="email"
@@ -84,6 +97,7 @@ export default function LoginForm() {
       <div className={css.field}>
         <div className={css.password_wrap}>
           <input
+            suppressHydrationWarning
             className={`${css.input} ${errors.password ? css.input_error : ''}`}
             type={showPassword ? 'text' : 'password'}
             name="password"
@@ -93,6 +107,7 @@ export default function LoginForm() {
             autoComplete="current-password"
           />
           <button
+            suppressHydrationWarning
             type="button"
             className={css.eye_btn}
             onClick={() => setShowPassword((v) => !v)}
@@ -106,15 +121,25 @@ export default function LoginForm() {
         {errors.password && <p className={css.error_msg}>{errors.password}</p>}
       </div>
 
-      <button className={css.submit_btn} type="submit" disabled={loading}>
+      <button
+        suppressHydrationWarning
+        className={css.submit_btn}
+        type="submit"
+        disabled={loading}
+      >
         {loading ? <span className={css.spinner} /> : 'Log in'}
       </button>
 
       <p className={css.footer_text}>
-        
-        <Link href="/register" className={css.footer_link}>
-          Don&apos;t have an account?
-        </Link>
+        {onSwitch ? (
+          <button type="button" className={css.footer_link} onClick={onSwitch}>
+            Don&apos;t have an account?
+          </button>
+        ) : (
+          <Link href="/register" className={css.footer_link}>
+            Don&apos;t have an account?
+          </Link>
+        )}
       </p>
     </form>
   );

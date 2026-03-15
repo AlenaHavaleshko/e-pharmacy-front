@@ -11,7 +11,7 @@ export const useAuthStore = create<AuthStore>()(
       token: null,
       isAuthenticated: false,
       cartCount: 0,
-      setAuth: (user, token) => set({ user, token, isAuthenticated: true }),
+      setAuth: (user, token) => set({ user, token, isAuthenticated: !!(user && token) }),
       logout: () => set({ user: null, token: null, isAuthenticated: false, cartCount: 0 }),
       setCartCount: (count) => set({ cartCount: count }),
     }),

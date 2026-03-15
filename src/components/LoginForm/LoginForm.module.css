@@ -125,9 +125,14 @@
 }
 
 .footer_link {
-  color: var(--color-dark);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: #1D1E2166;
   font-weight: 500;
+  font-size: inherit;
+  font-family: inherit;
   text-decoration: none;
   text-underline-offset: 2px;
-  color: #1D1E2166;
 }

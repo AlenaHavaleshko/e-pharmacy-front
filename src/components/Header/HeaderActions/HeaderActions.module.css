@@ -130,3 +130,45 @@
 .logout_btn:hover {
   background: rgba(255, 255, 255, 0.15);
 }
+
+/* ── Light variant (non-home pages) ───────────────── */
+
+.register_btn_light {
+  color: var(--color-dark);
+  border-color: rgba(29, 30, 33, 0.2);
+}
+
+.login_btn_light {
+  color: var(--color-dark);
+}
+
+.cart_btn_light {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.cart_btn_light svg {
+  stroke: var(--color-primary);
+}
+
+.user_btn_light {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.user_btn_light svg {
+  stroke: var(--color-primary);
+}
+
+.divider_light {
+  background: rgba(29, 30, 33, 0.2);
+}
+
+.logout_btn_light {
+  color: var(--color-dark);
+  border-color: rgba(29, 30, 33, 0.2);
+}
+
+.logout_btn_light:hover {
+  background: rgba(29, 30, 33, 0.06);
+}

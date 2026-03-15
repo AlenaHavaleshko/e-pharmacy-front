@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import { Toaster } from 'react-hot-toast';
 import Header from '@/src/components/Header/Header';
 import Footer from '@/src/components/Footer/Footer';
 import TanStackProvider from '@/src/components/TanStackProvider/TanStackProvider';
@@ -22,6 +23,7 @@ export default function RootLayout({
     <html lang="en" className={inter.variable}>
       <body>
         <TanStackProvider>
+          <Toaster position="top-right" />
           <Header />
           <div className="container"> {children}</div>
           <Footer />
