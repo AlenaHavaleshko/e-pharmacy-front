@@ -1,0 +1,218 @@
+.container {
+  background: var(--color-white);
+  border-radius: 20px;
+  padding: 40px;
+  flex: 1;
+  min-width: 0;
+}
+
+/* ── Tab bar ── */
+.tabList {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.tab {
+  padding: 8px 24px;
+  border-radius: 60px;
+  border: none;
+  background: var(--color-primary-10);
+  color: var(--color-primary);
+  font-family: var(--font-family);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.tab:hover:not(.tabActive) {
+  background: rgba(89, 177, 122, 0.18);
+}
+
+.tabActive {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+/* ── Panel ── */
+.tabPanel {
+  min-height: 200px;
+}
+
+/* ── Description ── */
+.descriptionContent {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.descriptionText {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--color-dark);
+  margin: 0;
+  white-space: pre-wrap;
+}
+
+.empty {
+  font-size: 14px;
+  color: rgba(29, 30, 33, 0.5);
+}
+
+/* ── Reviews ── */
+.reviewsContent {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.reviewList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.reviewCard {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  border-radius: 16px;
+  border: 1.5px solid rgba(29, 30, 33, 0.1);
+  padding: 14px 28px;
+}
+
+/* top row: avatar | name+date | stars+number */
+.reviewTop {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* ── Avatar ── */
+.avatar {
+  position: relative;
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--color-primary-10);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatarImg {
+  object-fit: cover;
+}
+
+.avatarInitials {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-primary);
+  text-transform: uppercase;
+  user-select: none;
+}
+
+/* ── Name + date ── */
+.reviewMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+
+.reviewName {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-dark);
+}
+
+.reviewDate {
+  font-size: 12px;
+  color: rgba(29, 30, 33, 0.5);
+}
+
+/* ── Stars + number ── */
+.starsRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.stars {
+  display: flex;
+  gap: 2px;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.starFilled {
+  color: #fbbf24;
+}
+
+.starEmpty {
+  color: rgba(29, 30, 33, 0.2);
+}
+
+.ratingNum {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(29, 30, 33, 0.5);
+}
+
+.reviewText {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--color-dark);
+  margin: 0;
+}
+
+/* ── Pagination ── */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.pageBtn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(29, 30, 33, 0.15);
+  background: transparent;
+  font-family: var(--font-family);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-dark);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.pageBtn:hover:not(:disabled):not(.pageBtnActive) {
+  background: var(--color-primary-10);
+  border-color: var(--color-primary);
+}
+
+.pageBtnActive {
+  background: var(--color-primary);
+  color: var(--color-white);
+  border-color: var(--color-primary);
+}
+
+.pageBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}

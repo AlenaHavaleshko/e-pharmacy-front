@@ -1,0 +1,159 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: var(--color-white);
+  border-radius: 20px;
+  background-color: transparent;
+  max-width: 320px;
+  width: 100%;
+}
+
+/* ── Image ── */
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: var(--color-light);
+  overflow: hidden;
+  border: 1px solid #59b17a99;
+  border-radius: 27px;
+}
+
+.image {
+  object-fit: contain;
+
+}
+
+/* ── Body ── */
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 20px;
+}
+
+.header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.name {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-dark);
+  line-height: 1.2;
+  margin: 0;
+}
+
+.price {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-dark);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.brand {
+  font-size: 14px;
+  color: #1D1E2199;
+  margin: 0;
+}
+
+.brandLabel {
+  font-weight: 600;
+  color: #1D1E2199;
+}
+
+/* ── Stars ── */
+.stars {
+  display: flex;
+  gap: 2px;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.starFilled {
+  color: #fbbf24;
+}
+
+.starEmpty {
+  color: rgba(29, 30, 33, 0.2);
+}
+
+/* ── Actions ── */
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 4px;
+}
+
+.quantityRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 1.5px solid rgba(29, 30, 33, 0.15);
+  border-radius: 60px;
+  padding: 6px 16px;
+}
+
+.qtyBtn {
+  background: none;
+  border: none;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--color-dark);
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s;
+}
+
+.qtyBtn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.qtyValue {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--color-dark);
+  min-width: 20px;
+  text-align: center;
+}
+
+.cartButton {
+  flex: 1;
+  height: 44px;
+  padding: 0 22px;
+  border: none;
+  border-radius: 60px;
+  background: var(--color-primary);
+  color: var(--color-white);
+  font-family: var(--font-family);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s;
+}
+
+.cartButton:hover:not(:disabled) {
+  background: #4a9a68;
+}
+
+.cartButton:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}

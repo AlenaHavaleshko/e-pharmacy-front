@@ -2,6 +2,17 @@ import { nextServer } from './api';
 import type { Store } from '@/src/types/store';
 import type { Product } from '@/src/types/product';
 
+export async function fetchProductById(id: string): Promise<Product | null> {
+  try {
+    const res = await nextServer.get(`/products/${id}`);
+    const raw = res.data;
+    if (raw?.data) return raw.data;
+    return raw ?? null;
+  } catch {
+    return null;
+  }
+}
+
 export async function fetchStores(): Promise<Store[]> {
   try {
     const res = await nextServer.get('/stores', {
