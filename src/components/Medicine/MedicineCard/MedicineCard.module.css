@@ -9,16 +9,28 @@
 .imageWrapper {
   position: relative;
   width: 100%;
-  aspect-ratio: 1 / 1;
+  height: 160px;
   background: var(--color-light);
   border-radius: 16px;
   border: 1.5px solid #59B17A99;
   overflow: hidden;
 }
 
+@media (min-width: 768px) {
+  .imageWrapper {
+    height: 196px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .imageWrapper {
+    height: 260px;
+  }
+}
+
 .image {
   object-fit: contain;
-  padding: 16px;
+  padding: 12px;
 }
 
 /* ── Body ── */

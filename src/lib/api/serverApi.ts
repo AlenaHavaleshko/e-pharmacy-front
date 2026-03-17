@@ -73,12 +73,32 @@ export async function fetchProducts(params?: {
 }): Promise<Product[]> {
   try {
     const res = await nextServer.get('/products', {
-      params: { limit: 12, page: 1, ...params },
+      params: { limit: 500, page: 1 },
     });
     const raw = res.data;
-    if (Array.isArray(raw)) return raw;
-    if (Array.isArray(raw?.data)) return raw.data;
-    return [];
+    let all: Product[] = [];
+    if (Array.isArray(raw)) all = raw;
+    else if (Array.isArray(raw?.data)) all = raw.data;
+
+    const { category, search } = params ?? {};
+
+    if (category) {
+      all = all.filter((p) =>
+        p.category?.toLowerCase() === category.toLowerCase()
+      );
+    }
+
+    if (search?.trim()) {
+      const q = search.trim().toLowerCase();
+      all = all.filter(
+        (p) =>
+          p.name?.toLowerCase().includes(q) ||
+          p.suppliers?.toLowerCase().includes(q) ||
+          p.category?.toLowerCase().includes(q)
+      );
+    }
+
+    return all;
   } catch {
     return [];
   }

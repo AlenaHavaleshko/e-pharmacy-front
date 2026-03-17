@@ -4,11 +4,15 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter, usePathname } from 'next/navigation';
 import { useAuthStore } from '@/src/lib/store/authStore';
+import { useCartStore } from '@/src/lib/store/cartStore';
 import { logoutUser } from '@/src/lib/api/clientApi';
 import css from './HeaderActions.module.css';
 
 export default function HeaderActions() {
-  const { isAuthenticated, cartCount, logout } = useAuthStore();
+  const { isAuthenticated, logout } = useAuthStore();
+  const cartCount = useCartStore((s) =>
+    s.items.reduce((sum, i) => sum + i.quantity, 0),
+  );
   const router = useRouter();
   const pathname = usePathname();
   const [mounted, setMounted] = useState(false);

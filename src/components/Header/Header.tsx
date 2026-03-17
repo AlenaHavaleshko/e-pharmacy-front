@@ -2,13 +2,16 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 import HeaderActions from './HeaderActions/HeaderActions';
+import MobileMenu from '@/src/components/MobileMenu/MobileMenu';
 import css from './Header.module.css';
 
 const Header = () => {
   const pathname = usePathname();
   const isHome = pathname === '/home' || pathname === '/';
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <header className={`${css.header} ${isHome ? '' : css.header_light}`}>
@@ -52,6 +55,7 @@ const Header = () => {
             className={`${css.burger} ${isHome ? '' : css.burger_dark}`}
             type="button"
             aria-label="Open menu"
+            onClick={() => setIsMenuOpen(true)}
           >
             <svg className={css.burger_icon} width={32} height={26}>
               <use href="/sprite.svg#icon-burger" />
@@ -59,6 +63,7 @@ const Header = () => {
           </button>
         </div>
       </div>
+      <MobileMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
     </header>
   );
 };

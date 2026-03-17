@@ -25,6 +25,29 @@ export async function addToCart(productId: string, quantity = 1): Promise<void> 
   await client.post('/cart', { productId, quantity });
 }
 
+export async function fetchCart() {
+  const res = await client.get('/cart');
+  return res.data;
+}
+
+export async function updateCartItem(productId: string, quantity: number): Promise<void> {
+  await client.patch('/cart/update', { productId, quantity });
+}
+
+export async function removeFromCart(productId: string): Promise<void> {
+  await client.patch('/cart/update', { productId, quantity: 0 });
+}
+
+export async function placeOrder(payload: {
+  name: string;
+  email: string;
+  phone: string;
+  address: string;
+  paymentMethod: 'cash' | 'bank';
+}): Promise<void> {
+  await client.post('/cart/checkout', payload);
+}
+
 export async function fetchProductById(id: string): Promise<Product | null> {
   try {
     const res = await client.get<Product | { data: Product }>(`/products/${id}`);

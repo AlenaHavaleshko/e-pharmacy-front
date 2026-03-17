@@ -3,7 +3,6 @@ import { persist } from 'zustand/middleware';
 import type { User } from '@/src/types/auth';
 import type { AuthStore } from '@/src/types/auth';
 
-
 export const useAuthStore = create<AuthStore>()(
   persist(
     (set) => ({

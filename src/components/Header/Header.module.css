@@ -45,7 +45,7 @@
 }
 
 .burger_dark .burger_icon {
-  stroke: var(--color-dark);
+  stroke: var(--color-primary);
 }
 
 .nav_list {
@@ -121,8 +121,8 @@
 }
 
 .burger_icon {
-  stroke: var(--color-white);
-  fill: none;
+  stroke: var(--color-primary);
+  fill: var(--color-primary);
 }
 
 @media screen and (min-width: 768px) {

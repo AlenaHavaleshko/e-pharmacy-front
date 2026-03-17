@@ -8,7 +8,7 @@
 /* ── Unauthenticated ───────────────────────────── */
 
 .register_btn {
-  display: inline-flex;
+  display: none;
   align-items: center;
   font-size: 14px;
   font-weight: 400;
@@ -25,7 +25,7 @@
 }
 
 .login_btn {
-  display: inline-flex;
+  display: none;
   align-items: center;
   font-size: 14px;
   font-weight: 400;
@@ -107,6 +107,7 @@
 
 
 .logout_btn {
+  display: none;
   cursor: pointer;
   font-size: 14px;
   font-weight: 400;
@@ -189,4 +190,13 @@
 .logout_btn_light:hover {
   background: var(--color-primary);
   color: var(--color-white);
+}
+
+@media screen and (min-width: 768px) {
+  .register_btn,
+  .login_btn,
+  .logout_btn {
+    display: inline-flex;
+  }
+  
 }

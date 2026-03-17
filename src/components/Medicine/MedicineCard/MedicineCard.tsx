@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useAuthStore } from '@/src/lib/store/authStore';
-import { addToCart } from '@/src/lib/api/clientApi';
+import { useCartStore } from '@/src/lib/store/cartStore';
 import AuthModal from '../AuthModal/AuthModal';
 import styles from './MedicineCard.module.css';
 
@@ -24,25 +24,18 @@ export const MedicineCard = ({
   photo,
 }: MedicineCardProps) => {
   const isAuthenticated = useAuthStore((s) => s.isAuthenticated);
+  const addItem = useCartStore((s) => s.addItem);
   const [showAuthModal, setShowAuthModal] = useState(false);
-  const [loading, setLoading] = useState(false);
   const [added, setAdded] = useState(false);
 
-  const handleAddToCart = async () => {
+  const handleAddToCart = () => {
     if (!isAuthenticated) {
       setShowAuthModal(true);
       return;
     }
-    setLoading(true);
-    try {
-      await addToCart(id, 1);
-      setAdded(true);
-      setTimeout(() => setAdded(false), 2000);
-    } catch {
-      // silently fail — could toast here
-    } finally {
-      setLoading(false);
-    }
+    addItem({ productId: id, name, price, suppliers, photo, quantity: 1 });
+    setAdded(true);
+    setTimeout(() => setAdded(false), 2000);
   };
 
   return (
@@ -69,10 +62,10 @@ export const MedicineCard = ({
             <button
               className={styles.cartButton}
               type="button"
-              disabled={loading || added}
+              disabled={added}
               onClick={handleAddToCart}
             >
-              {added ? 'Added!' : loading ? 'Adding…' : 'Add to cart'}
+              {added ? 'Added!' : 'Add to cart'}
             </button>
             <Link href={`/product/${id}`} className={styles.detailsLink}>
               Details

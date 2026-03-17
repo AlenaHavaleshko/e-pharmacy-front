@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { useAuthStore } from '@/src/lib/store/authStore';
-import { addToCart } from '@/src/lib/api/clientApi';
+import { useCartStore } from '@/src/lib/store/cartStore';
 import AuthModal from '@/src/components/Medicine/AuthModal/AuthModal';
 import type { Product } from '@/src/types/product';
 import styles from './ProductOverview.module.css';
@@ -30,29 +30,29 @@ function StarRating({ rating }: { rating: number }) {
 
 export default function ProductOverview({ product }: ProductOverviewProps) {
   const isAuthenticated = useAuthStore((s) => s.isAuthenticated);
+  const addItem = useCartStore((s) => s.addItem);
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [quantity, setQuantity] = useState(1);
-  const [loading, setLoading] = useState(false);
   const [added, setAdded] = useState(false);
 
   const decrement = () => setQuantity((q) => Math.max(1, q - 1));
   const increment = () => setQuantity((q) => q + 1);
 
-  const handleAddToCart = async () => {
+  const handleAddToCart = () => {
     if (!isAuthenticated) {
       setShowAuthModal(true);
       return;
     }
-    setLoading(true);
-    try {
-      await addToCart(product._id ?? product.id, quantity);
-      setAdded(true);
-      setTimeout(() => setAdded(false), 2000);
-    } catch {
-      // silently fail — could toast here
-    } finally {
-      setLoading(false);
-    }
+    addItem({
+      productId: product._id ?? product.id,
+      name: product.name,
+      photo: product.photo,
+      price: product.price,
+      suppliers: product.suppliers,
+      quantity,
+    });
+    setAdded(true);
+    setTimeout(() => setAdded(false), 2000);
   };
 
   return (
@@ -104,10 +104,10 @@ export default function ProductOverview({ product }: ProductOverviewProps) {
             <button
               className={styles.cartButton}
               type="button"
-              disabled={loading || added}
+              disabled={added}
               onClick={handleAddToCart}
             >
-              {added ? 'Added!' : loading ? 'Adding…' : 'Add to cart'}
+              {added ? 'Added!' : 'Add to cart'}
             </button>
           </div>
         </div>

@@ -1,0 +1,182 @@
+/* Backdrop */
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.35);
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Sliding panel */
+.panel {
+  width: 70%;
+  max-width: 320px;
+  height: 100%;
+  background: var(--color-primary);
+  display: flex;
+  flex-direction: column;
+  padding: 24px 20px 36px;
+  animation: slideIn 0.25s ease;
+  overflow-y: auto;
+}
+
+@keyframes slideIn {
+  from { transform: translateX(100%); }
+  to   { transform: translateX(0); }
+}
+
+/* Top row: logo + close */
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 48px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo_text {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--color-white);
+  letter-spacing: -0.02em;
+}
+
+.close_btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+}
+
+/* Nav */
+.nav {
+  flex: 1;
+}
+
+.nav_list {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 120px;
+}
+
+.nav_item {
+  position: relative;
+  display: block;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 100%;
+  background: var(--color-white);
+  border-radius: 60px;
+  padding: 16px 28px;
+  color: #93939a;
+  text-align: center;
+  min-width: 100%;
+  padding: 18px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.nav_item:hover {
+  background: var(--color-primary);
+  color: var(--color-white);
+  border: 8px solid var(--color-white);
+  padding: 8px 20px;
+}
+
+.nav_item_active {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+/* Bottom auth actions */
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 40px;
+}
+
+.register_btn {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-white);
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 60px;
+  padding: 10px 22px;
+  transition: background 0.2s;
+}
+
+.register_btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.login_btn {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-primary);
+  background: var(--color-white);
+  border-radius: 60px;
+  padding: 10px 22px;
+  transition: opacity 0.2s;
+}
+
+.login_btn:hover {
+  opacity: 0.9;
+}
+
+.logout_btn {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-primary);
+  background: var(--color-white);
+  border: none;
+  border-radius: 60px;
+  padding: 10px 22px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.logout_btn:hover {
+  opacity: 0.85;
+}
+
+/* Cart icon with badge */
+.cart_link {
+  position: relative;
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+}
+
+.cart_badge {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  background: var(--color-white);
+  color: var(--color-primary);
+  font-size: 10px;
+  font-weight: 700;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
