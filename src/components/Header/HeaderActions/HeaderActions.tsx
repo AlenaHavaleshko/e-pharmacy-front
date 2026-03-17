@@ -53,7 +53,7 @@ export default function HeaderActions() {
           aria-label="Cart"
         >
           <svg width={18} height={18} aria-hidden="true">
-            <use href="/sprite.svg#icon-cart" />
+            <use href="/sprite.svg#icon-shopping-cart" />
           </svg>
           <span className={css.cart_badge}>{cartCount}</span>
         </Link>
@@ -64,14 +64,9 @@ export default function HeaderActions() {
           aria-label="Profile"
         >
           <svg width={18} height={18} aria-hidden="true">
-            <use href="/sprite.svg#icon-user" />
+            <use href="/sprite.svg#icon-I-user" />
           </svg>
         </Link>
-
-        <span
-          className={`${css.divider} ${isHome ? '' : css.divider_light}`}
-          aria-hidden="true"
-        />
 
         <button
           className={`${css.logout_btn} ${isHome ? '' : css.logout_btn_light}`}

@@ -8,14 +8,6 @@
   background: #F7F8FA;
 }
 
-.link_text_dark {
-  color: var(--color-dark);
-}
-
-.burger_dark .burger_icon {
-  stroke: var(--color-dark);
-}
-
 .header_container {
   padding-top: 25px;
   padding-bottom: 25px;
@@ -46,6 +38,14 @@
   font-size: 16px;
   letter-spacing: -0.03em;
   color: var(--color-white);
+}
+
+.link_text_dark {
+  color: var(--color-dark);
+}
+
+.burger_dark .burger_icon {
+  stroke: var(--color-dark);
 }
 
 .nav_list {

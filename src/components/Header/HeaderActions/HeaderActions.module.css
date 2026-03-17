@@ -98,20 +98,13 @@
 
 .user_btn svg {
   stroke: var(--color-white);
-  fill: none;
+  fill: var(--color-white);
 }
 
 .user_btn:hover {
   background: rgba(255, 255, 255, 0.15);
 }
 
-.divider {
-  display: inline-block;
-  width: 1px;
-  height: 22px;
-  background: rgba(255, 255, 255, 0.45);
-  flex-shrink: 0;
-}
 
 .logout_btn {
   cursor: pointer;
@@ -143,21 +136,45 @@
 }
 
 .cart_btn_light {
-  border-color: var(--color-primary);
+  border-color: #F1F1F1;
   color: var(--color-primary);
+  background-color: #FFFFFF;
+}
+
+.cart_btn_light:hover {
+  background: var(--color-primary);
+  color: var(--color-white);
 }
 
 .cart_btn_light svg {
   stroke: var(--color-primary);
 }
 
+.cart_btn_light svg:hover {
+  stroke: var(--color-white);
+}
+
 .user_btn_light {
-  border-color: var(--color-primary);
+  border-color: none;
   color: var(--color-primary);
+  background-color: #59B17A1A;
+}
+
+.user_btn_light:hover {
+  background: var(--color-primary);
+  color: var(--color-white);
+  stroke: var(--color-primary);
+  fill: var(--color-primary);
 }
 
 .user_btn_light svg {
   stroke: var(--color-primary);
+  fill: var(--color-primary);
+}
+
+.user_btn_light svg:hover {
+  stroke: var(--color-white);
+  fill: var(--color-white);
 }
 
 .divider_light {
@@ -165,10 +182,11 @@
 }
 
 .logout_btn_light {
-  color: var(--color-dark);
-  border-color: rgba(29, 30, 33, 0.2);
+  color: var(--color-primary);
+  border-color: #59B17A80;
 }
 
 .logout_btn_light:hover {
-  background: rgba(29, 30, 33, 0.06);
+  background: var(--color-primary);
+  color: var(--color-white);
 }
