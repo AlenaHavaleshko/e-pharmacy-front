@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import styles from './StoreCard.module.css';
 
 interface StoreCardProps {
@@ -22,6 +23,28 @@ export const StoreCard = ({
 }: StoreCardProps) => {
   return (
     <div className={`${styles.card} ${styles[variant]}`}>
+      {variant === 'stores' && (
+        <div className={styles.decor} aria-hidden>
+          <Image
+            src="/home-nearest/Rectangle 42212.png"
+            alt=""
+            fill
+            className={styles.decor_img}
+          />
+          <Image
+            src="/home-nearest/Rectangle 42213.png"
+            alt=""
+            fill
+            className={styles.decor_img}
+          />
+          <Image
+            src="/home-nearest/Rectangle 42214.png"
+            alt=""
+            fill
+            className={styles.decor_img}
+          />
+        </div>
+      )}
       <div className={styles.header}>
         <h3 className={styles.name}>{name}</h3>
 

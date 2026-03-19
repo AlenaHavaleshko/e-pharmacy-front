@@ -44,8 +44,14 @@
   color: var(--color-dark);
 }
 
+.burger_icon {
+  stroke: #ffffff;
+  fill: #ffffff;
+}
+
 .burger_dark .burger_icon {
   stroke: var(--color-primary);
+  fill: var(--color-primary);
 }
 
 .nav_list {
@@ -120,9 +126,15 @@
   align-items: center;
 }
 
-.burger_icon {
-  stroke: var(--color-primary);
-  fill: var(--color-primary);
+/* Hide HeaderActions on mobile/tablet on the home page */
+.actions_home {
+  display: none;
+}
+
+@media screen and (min-width: 1440px) {
+  .actions_home {
+    display: block;
+  }
 }
 
 @media screen and (min-width: 768px) {

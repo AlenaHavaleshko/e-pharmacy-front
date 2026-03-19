@@ -15,13 +15,15 @@ export default function AddPharmacyPromo() {
     <section className={styles.section}>
       <div className={styles.card}>
         <div className={styles.content}>
-          <h2 className={styles.title}>Add your local pharmacy online now</h2>
+          <h2 className={styles.title}>
+            Add the medicines you need online now
+          </h2>
           <p className={styles.description}>
             Enjoy the convenience of having your prescriptions filled from home
             by connecting with your community pharmacy through our online
             platform.
           </p>
-          <Link href="/medicine-store" className={styles.button}>
+          <Link href="/medicine" className={styles.button}>
             Buy medicine
           </Link>
         </div>
@@ -29,7 +31,7 @@ export default function AddPharmacyPromo() {
         {/* Mobile image */}
         <div className={`${styles.imageWrapper} ${styles.imageMobile}`}>
           <Image
-            src="/add-home/add_medecine-mb.jpg"
+            src="/add-home/add_medicine-mb.png"
             alt="Add pharmacy online"
             width={343}
             height={281}
@@ -40,10 +42,10 @@ export default function AddPharmacyPromo() {
         {/* Tablet image */}
         <div className={`${styles.imageWrapper} ${styles.imageTablet}`}>
           <Image
-            src="/add-home/add_medecine-tb.jpg"
+            src="/add-home/add_medicine-td.png"
             alt="Add pharmacy online"
-            width={320}
-            height={380}
+            fill
+            sizes="(min-width: 768px) 100vw"
             className={styles.image}
           />
         </div>
@@ -51,10 +53,10 @@ export default function AddPharmacyPromo() {
         {/* Desktop image */}
         <div className={`${styles.imageWrapper} ${styles.imageDesktop}`}>
           <Image
-            src="/add-home/add_medecine-dt.jpg"
+            src="/add-home/add_medicine-dt.png"
             alt="Add pharmacy online"
-            width={464}
-            height={380}
+            width={600}
+            height={406}
             className={styles.image}
           />
         </div>

@@ -49,7 +49,9 @@ const Header = () => {
               </li>
             </ul>
           </nav>
-          <HeaderActions />
+          <div className={isHome ? css.actions_home : ''}>
+            <HeaderActions />
+          </div>
 
           <button
             className={`${css.burger} ${isHome ? '' : css.burger_dark}`}

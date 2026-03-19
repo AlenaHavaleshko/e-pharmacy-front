@@ -90,19 +90,9 @@ function relativeDate(dateStr: string): string {
 }
 
 function StarRating({ rating }: { rating: number }) {
-  const filled = Math.round(Math.max(0, Math.min(5, rating)));
   return (
     <div className={styles.starsRow} aria-label={`Rating: ${rating} out of 5`}>
-      <div className={styles.stars}>
-        {Array.from({ length: 5 }, (_, i) => (
-          <span
-            key={i}
-            className={i < filled ? styles.starFilled : styles.starEmpty}
-          >
-            ★
-          </span>
-        ))}
-      </div>
+      <span className={styles.starFilled}>★</span>
       <span className={styles.ratingNum}>{rating}</span>
     </div>
   );

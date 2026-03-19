@@ -80,14 +80,34 @@ export default function CartPage() {
   ) {
     try {
       await placeOrder({
-        ...values,
-        paymentMethod: values.paymentMethod as 'cash' | 'bank',
+        name: values.name,
+        address: values.address,
+        photo: items[0]?.photo ?? '',
+        products: items.reduce((sum, i) => sum + i.quantity, 0),
+        price: total,
+        order_date: new Date().toISOString(),
       });
       clearCart();
       resetForm();
-      toast.success('Order placed successfully!');
+      toast.success(
+        'Your order has been placed successfully! We will contact you shortly.',
+        {
+          duration: 5000,
+          style: {
+            background: '#59b17a',
+            color: '#fff',
+            fontWeight: '500',
+            borderRadius: '12px',
+            padding: '14px 20px',
+          },
+          iconTheme: { primary: '#fff', secondary: '#59b17a' },
+        },
+      );
     } catch {
-      toast.error('Failed to place order. Please try again.');
+      toast.error('Failed to place order. Please try again.', {
+        duration: 4000,
+        style: { borderRadius: '12px', padding: '14px 20px' },
+      });
     }
   }
 
@@ -242,7 +262,7 @@ export default function CartPage() {
                 <div className={css.section}>
                   <h2 className={css.section_title}>Order details</h2>
                   <p className={css.section_desc}>
-                    Shipping and additonnal costs are calculated based on values
+                    Shipping and additional costs are calculated based on values
                     you have entered.
                   </p>
                   <div className={css.total_row}>

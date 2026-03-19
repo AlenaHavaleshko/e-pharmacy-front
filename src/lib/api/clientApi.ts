@@ -7,6 +7,24 @@ const client = axios.create({
   withCredentials: true,
 });
 
+// Attach Bearer token from persisted auth store on every request
+client.interceptors.request.use((config) => {
+  try {
+    const raw = localStorage.getItem('auth-storage');
+    if (raw) {
+      const parsed = JSON.parse(raw) as { state?: { token?: string } };
+      const token = parsed?.state?.token;
+      if (token) {
+        config.headers = config.headers ?? {};
+        config.headers['Authorization'] = `Bearer ${token}`;
+      }
+    }
+  } catch {
+    // ignore
+  }
+  return config;
+});
+
 export async function registerUser(data: RegisterData): Promise<AuthResponse> {
   const res = await client.post<AuthResponse>('/user/register', data);
   return res.data;
@@ -40,10 +58,11 @@ export async function removeFromCart(productId: string): Promise<void> {
 
 export async function placeOrder(payload: {
   name: string;
-  email: string;
-  phone: string;
   address: string;
-  paymentMethod: 'cash' | 'bank';
+  photo: string;
+  products: number;
+  price: number;
+  order_date: string;
 }): Promise<void> {
   await client.post('/cart/checkout', payload);
 }

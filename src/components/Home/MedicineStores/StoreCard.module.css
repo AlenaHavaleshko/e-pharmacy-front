@@ -2,14 +2,31 @@
   position: relative;
   background: var(--color-primary-10);
   border-radius: 16px;
-  padding: 40px;
+  padding: 40px 24px 40px 40px;
   display: flex;
   flex-direction: column;
   gap: 16px;
   overflow: hidden;
 }
 
+.decor {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 160px;
+  height: 120px;
+  pointer-events: none;
+  user-select: none;
+}
+
+.decor_img {
+  object-fit: contain;
+  object-position: bottom right;
+  margin-right: 10px;
+}
+
 .header {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -23,6 +40,14 @@
   line-height: 1.2;
   margin: 0;
   margin-bottom: 40px;
+  max-width: 150px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.stores .name {
+  margin-bottom: 0;
 }
 
 .star {
@@ -54,6 +79,9 @@
 }
 
 .meta {
+  position: absolute;
+  top: 0;
+  right: 0;
   display: flex;             
   align-items: center;       
   justify-content: center;
@@ -103,6 +131,10 @@
   justify-content: space-between;
   align-items: center;
   margin-top: 8px;
+}
+
+.footer .meta {
+  position: static;
 }
 
 .visitButton {

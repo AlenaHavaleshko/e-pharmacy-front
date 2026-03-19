@@ -89,7 +89,7 @@
 /* top row: avatar | name+date | stars+number */
 .reviewTop {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 12px;
 }
 
@@ -123,7 +123,7 @@
 .reviewMeta {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 4px;
   flex: 1;
   min-width: 0;
 }
@@ -132,24 +132,27 @@
   font-size: 14px;
   font-weight: 600;
   color: var(--color-dark);
+  white-space: nowrap;
 }
 
 .reviewDate {
   font-size: 12px;
   color: rgba(29, 30, 33, 0.5);
+  white-space: nowrap;
 }
 
 /* ── Stars + number ── */
 .starsRow {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 4px;
   flex-shrink: 0;
+  align-self: flex-start;
 }
 
 .stars {
   display: flex;
-  gap: 2px;
+  gap: 0;
   font-size: 16px;
   line-height: 1;
 }
@@ -159,13 +162,13 @@
 }
 
 .starEmpty {
-  color: rgba(29, 30, 33, 0.2);
+  display: none;
 }
 
 .ratingNum {
   font-size: 14px;
   font-weight: 500;
-  color: rgba(29, 30, 33, 0.5);
+  color: var(--color-dark);
 }
 
 .reviewText {

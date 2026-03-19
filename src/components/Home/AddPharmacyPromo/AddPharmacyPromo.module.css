@@ -62,12 +62,14 @@
 /* ===== Image wrappers ===== */
 .imageWrapper {
   line-height: 0;
+  background: var(--color-primary);
+  padding: 19px 21px 20px;
 }
 
 .image {
   width: 100%;
   height: auto;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
 }
 
@@ -107,14 +109,14 @@
   }
 
   .card {
-    flex-direction: row;
+    flex-direction: column;
     align-items: stretch;
-    min-height: 380px;
+    min-height: unset;
   }
 
   .content {
     padding: 60px 40px;
-    max-width: 380px;
+    max-width: 608px;
     justify-content: center;
   }
 
@@ -124,20 +126,20 @@
 
   .description {
     font-size: 15px;
+    max-width: 488px;
   }
 
-  /* Image sits on the right, fills the remaining space */
+  /* Image sits below content, fills card width */
   .imageWrapper {
-    position: absolute;
-    right: 0;
-    top: 0;
-    height: 100%;
+    position: relative;
+    width: 100%;
+    height: 320px;
+    overflow: hidden;
   }
 
   .image {
-    width: auto;
+    width: 100%;
     height: 100%;
-    object-fit: cover;
   }
 
   .imageMobile  { display: none; }
@@ -149,6 +151,11 @@
     flex-wrap: wrap;
     gap: 20px 32px;
     margin-top: 32px;
+    justify-content: center;
+  }
+
+  .featuresList > li:nth-child(n+4) {
+    display: none;
   }
 }
 
@@ -161,6 +168,8 @@
   }
 
   .card {
+    flex-direction: row;
+    align-items: center;
     min-height: 380px;
   }
 
@@ -193,6 +202,10 @@
     gap: 0;
     justify-content: space-between;
     margin-top: 40px;
+  }
+
+  .featuresList > li:nth-child(n+4) {
+    display: flex;
   }
 
   .featureItem {

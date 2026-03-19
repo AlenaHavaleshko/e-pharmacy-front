@@ -1,6 +1,4 @@
-.section {
-  padding: 40px 16px 80px;
-}
+
 
 .title {
   font-size: 28px;
@@ -19,9 +17,6 @@
 }
 
 @media (min-width: 768px) {
-  .section {
-    padding: 40px 32px 80px;
-  }
 
   .grid {
     grid-template-columns: repeat(2, 1fr);
