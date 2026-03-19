@@ -1,3 +1,5 @@
+// user types for authentication
+
 export interface User {
   _id?: string;
   id?: string;
