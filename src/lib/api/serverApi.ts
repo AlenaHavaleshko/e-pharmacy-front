@@ -1,10 +1,10 @@
-import { nextServer } from './api';
+import { server } from './api';
 import type { Store } from '@/src/types/store';
 import type { Product } from '@/src/types/product';
 
 export async function fetchProductById(id: string): Promise<Product | null> {
   try {
-    const res = await nextServer.get(`/products/${id}`);
+    const res = await server.get(`/products/${id}`);
     const raw = res.data;
     if (raw?.data) return raw.data;
     return raw ?? null;
@@ -15,7 +15,7 @@ export async function fetchProductById(id: string): Promise<Product | null> {
 
 export async function fetchStores(): Promise<Store[]> {
   try {
-    const res = await nextServer.get('/stores', {
+    const res = await server.get('/stores', {
       params: { limit: 6, page: 1 },
     });
     const data = res.data;
@@ -30,7 +30,7 @@ export async function fetchStores(): Promise<Store[]> {
 
 export async function fetchStoresNearest(): Promise<Store[]> {
   try {
-    const res = await nextServer.get('/stores/nearest', {
+    const res = await server.get('/stores/nearest', {
       params: { limit: 6, page: 1 },
     });
     const data = res.data;
@@ -46,7 +46,7 @@ export async function fetchStoresNearest(): Promise<Store[]> {
 
 export async function fetchCategories(): Promise<string[]> {
   try {
-    const res = await nextServer.get('/products', {
+    const res = await server.get('/products', {
       params: { limit: 1000, page: 1 },
     });
     // backend returns { status: 200, data: [...] }
@@ -72,7 +72,7 @@ export async function fetchProducts(params?: {
   limit?: number;
 }): Promise<Product[]> {
   try {
-    const res = await nextServer.get('/products', {
+    const res = await server.get('/products', {
       params: { limit: 500, page: 1 },
     });
     const raw = res.data;
