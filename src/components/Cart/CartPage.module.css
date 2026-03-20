@@ -21,9 +21,8 @@
 .card {
   display: flex;
   flex-direction: column;
-  gap: 28px;
-  background: #F7F8FA;
-  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.06);
+  gap: 96px;
+  background: transparent;
   align-items: flex-start;
 }
 
@@ -80,8 +79,14 @@
 
 .fields_grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 16px 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .fields_grid {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 .field_group {
@@ -238,13 +243,24 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 0;
 }
 
 .item {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  padding: 24px 0;
+  border-bottom: 1px solid rgba(29, 30, 33, 0.1);
+}
+
+.item:first-child {
+  padding-top: 0;
+}
+
+.item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
 }
 
 .item_top {

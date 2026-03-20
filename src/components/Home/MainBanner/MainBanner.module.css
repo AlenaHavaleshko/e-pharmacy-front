@@ -49,6 +49,7 @@
   left: 50%;
   transform: translate(-60%, -70%);
   max-width: 293px;
+  margin-bottom: 20px;
 }
 
 .subtitle {
@@ -115,11 +116,13 @@
   .title {
     font-size: 74px;
     max-width: 609px;
+    transform: translate(-70%, -70%);
   }
 
 .subtitle {
   font-size: 16px;
   max-width: 207px;
+  transform: translate(-30%, 100%);
 }
 
   .promoContent {
