@@ -8,7 +8,8 @@ export async function fetchProductById(id: string): Promise<Product | null> {
     const raw = res.data;
     if (raw?.data) return raw.data;
     return raw ?? null;
-  } catch {
+  } catch (err) {
+    console.error('[serverApi] fetchProductById failed:', err);
     return null;
   }
 }
@@ -23,13 +24,16 @@ export async function fetchStores(): Promise<Store[]> {
     if (Array.isArray(data?.stores)) return data.stores;
     if (Array.isArray(data?.data)) return data.data;
     return [];
-  } catch {
+  } catch (err) {
+    console.error('[serverApi] fetchStores failed:', err);
     return [];
   }
 }
 
 export async function fetchStoresNearest(): Promise<Store[]> {
   try {
+
+    console.log("Full request URL:", nextServer.defaults.baseURL + '/stores/nearest');  // Логируем полный URL
     const res = await nextServer.get('/stores/nearest', {
       params: { limit: 6, page: 1 },
     });
@@ -39,7 +43,8 @@ export async function fetchStoresNearest(): Promise<Store[]> {
     if (Array.isArray(data?.data)) return data.data;
     if (Array.isArray(data)) return data;
     return [];
-  } catch {
+  } catch (err) {
+    console.error('[serverApi] fetchStoresNearest failed:', err);
     return [];
   }
 }
@@ -60,7 +65,8 @@ export async function fetchCategories(): Promise<string[]> {
       new Set(products.map((p) => p.category).filter(Boolean) as string[])
     ).sort();
     return unique;
-  } catch {
+  } catch (err) {
+    console.error('[serverApi] fetchCategories failed:', err);
     return [];
   }
 }
@@ -99,7 +105,8 @@ export async function fetchProducts(params?: {
     }
 
     return all;
-  } catch {
+  } catch (err) {
+    console.error('[serverApi] fetchProducts failed:', err);
     return [];
   }
 }

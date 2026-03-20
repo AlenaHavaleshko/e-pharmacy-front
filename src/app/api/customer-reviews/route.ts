@@ -4,7 +4,7 @@ import { logErrorResponse } from '../_utils/logErrorResponse';
 
 export async function GET() {
   try {
-    const res = await api.get('/api/customer-reviews');
+    const res = await api.get('/customer-reviews');
     return NextResponse.json(res.data);
   } catch (error) {
     logErrorResponse(error);
