@@ -62,15 +62,14 @@ export default function HeaderActions() {
           <span className={css.cart_badge}>{cartCount}</span>
         </Link>
 
-        <Link
-          href="/profile"
+        <span
           className={`${css.user_btn} ${isHome ? '' : css.user_btn_light}`}
           aria-label="Profile"
         >
           <svg width={18} height={18} aria-hidden="true">
             <use href="/sprite.svg#icon-I-user" />
           </svg>
-        </Link>
+        </span>
 
         <button
           className={`${css.logout_btn} ${isHome ? '' : css.logout_btn_light}`}
