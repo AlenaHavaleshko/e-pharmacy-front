@@ -1,36 +1,131 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+﻿# E-Pharmacy 
 
-## Getting Started
+An online pharmacy web application for browsing medicines, exploring nearby stores, and placing orders. Built as a team pet project with a full-stack architecture.
 
-First, run the development server:
+---
+
+##  Live Demo
+
+> _Coming soon  deploy link will be added here_
+
+---
+
+##  Design & Requirements
+
+- **Figma Mockup:** [https://www.figma.com/design/qrKzOBVqM6zOZNFkTOpEO0/E-PHARMACY--clients-?node-id=0-1&p=f&t=Ae8vNCz05lNPDkWR-0]
+- **Technical Specification:** [https://docs.google.com/spreadsheets/d/1TdZTkbTSEcscopFAAH1XiiAbkP8IOawIugpvaG9xnuw/edit?gid=0#gid=0]
+- **Backend Repository:**  [https://github.com/AlenaHavaleshko/e-pharmacy]
+
+---
+
+##  Features
+
+-  **Home page**  hero banner, promo sections, nearest medicine stores, customer reviews
+-  **Medicine Store**  browse and search pharmacies
+-  **Medicine**  paginated catalogue with filter by category and name search (protected route)
+-  **Product page**  product details with tabs (description, reviews, etc.)
+-  **Cart**  add/remove items, update quantity, checkout form with order placement (protected route)
+-  **Auth**  login and registration with JWT, auto-login after register, persistent session
+-  **Responsive**  mobile, tablet (768px) and desktop (1440px) layouts
+
+---
+
+##  Tech Stack
+
+### Frontend
+
+| Technology | Purpose |
+|---|---|
+| [Next.js 16](https://nextjs.org/) | Framework (App Router, SSR/SSG) |
+| [TypeScript](https://www.typescriptlang.org/) | Type safety |
+| [React 19](https://react.dev/) | UI library |
+| [Formik](https://formik.org/) + [Yup](https://github.com/jquense/yup) | Form handling & validation |
+| [TanStack Query](https://tanstack.com/query) | Server state management |
+| [Zustand](https://zustand-demo.pmnd.rs/) | Client state (auth, cart) |
+| [Axios](https://axios-http.com/) | HTTP client |
+| [react-hot-toast](https://react-hot-toast.com/) | Toast notifications |
+| CSS Modules | Scoped component styling |
+
+### Backend
+
+- Node.js REST API (separate repository)
+- Proxied via Next.js API Routes (`src/app/api`)
+- Images hosted on Cloudinary
+
+---
+
+##  Project Structure
+
+```
+src/
+ app/                      # Next.js App Router
+    (auth-layout)/        # /login, /register
+    (main-layout)/
+       (public routes)/  # /home, /medicine-store, /product, /store
+       (privat routes)/  # /medicine, /cart   require auth
+    api/                  # Next.js API Route handlers (proxy to backend)
+ components/               # Feature and UI components
+ lib/
+    api/                  # API client (server/client)
+    store/                # Zustand stores (auth, cart)
+ types/                    # TypeScript interfaces
+```
+
+---
+
+##  Getting Started
+
+### Prerequisites
+
+- Node.js 18+
+- npm
+
+### Installation
+
+```bash
+git clone https://github.com/<your-username>/e-pharmacy-front.git
+cd e-pharmacy-front
+npm install
+```
+
+### Environment variables
+
+Create a `.env.local` file in the root:
+
+```env
+NODE_BACKEND_URL=http://localhost:3000
+```
+
+### Run development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3001](http://localhost:3001) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Build for production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+##  Authentication
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- JWT-based auth stored via Zustand `persist` middleware (localStorage)
+- Protected routes redirect unauthenticated users to `/login`
+- Auto-login after successful registration
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+##  Deployment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The project is designed to be deployed on **Vercel**:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Push to GitHub
+2. Import the repo at [vercel.com](https://vercel.com)
+3. Add `NODE_BACKEND_URL` as an environment variable
+4. Deploy 
