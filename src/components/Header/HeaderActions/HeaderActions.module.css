@@ -151,7 +151,7 @@
   stroke: var(--color-primary);
 }
 
-.cart_btn_light svg:hover {
+.cart_btn_light:hover svg {
   stroke: var(--color-white);
 }
 
@@ -173,7 +173,7 @@
   fill: var(--color-primary);
 }
 
-.user_btn_light svg:hover {
+.user_btn_light:hover svg {
   stroke: var(--color-white);
   fill: var(--color-white);
 }
